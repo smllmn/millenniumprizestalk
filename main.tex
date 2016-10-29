@@ -1,8 +1,10 @@
 \documentclass{beamer}
 
+\usepackage{multicol}
+
 \newcommand{\Poincare}{Poincar\'{e}}
 
-\usetheme{metropolis}           % Use metropolis theme
+\usetheme[progressbar=title]{metropolis}           % Use metropolis theme
 \title{The Millennium Prize Problems}
 \subtitle{A PGR Seminar in Two Parts}
 \date{}
@@ -12,9 +14,15 @@
 
 \begin{document}
   \maketitle
+  \begin{frame}{Structure}
+      \begin{multicols}{2}
+          \tableofcontents
+      \end{multicols}
+  \end{frame}
+
   \section{Introduction}
   \begin{frame}{Introduction}
-    The Millennium Prize Problems are...
+      The Millennium Prize Problems are problems...
   \end{frame}
 
   \section{P versus NP}
