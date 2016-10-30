@@ -1,8 +1,9 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{multicol}
 \usepackage{multimedia}
 \usepackage{mathtools}
+\usepackage{oz}
 
 \newcommand{\Poincare}{Poincar\'{e}}
 \newcommand{\Complex}{\mathbb{C}}
@@ -10,6 +11,11 @@
 \newcommand{\Rational}{\mathbb{Q}}
 \newcommand{\Integer}{\mathbb{Z}}
 \newcommand{\Natural}{\mathbb{N}}
+
+\newcommand{\PTIME}{\mathbf{P}}
+\newcommand{\NPTIME}{\mathbf{NP}}
+\newcommand{\DTIME}{\mathbf{DTIME}}
+\newcommand{\NTIME}{\mathbf{NTIME}}
 
 \usetheme[progressbar=title]{metropolis}           % Use metropolis theme
 \title{The Millennium Prize Problems}
@@ -47,13 +53,85 @@
   \end{center}
   \end{frame}
 
-  \section{P versus NP}
-  \begin{frame}{P vs NP}
+  \section{$\PTIME$ versus $\NPTIME$}
+  \begin{frame}{$\PTIME$ vs $\NPTIME$}
       \begin{block}{Problem Statement}
-          Prove or disprove that $\mathcal{P} = \mathcal{NP}$
+          Prove or disprove that $\PTIME = \NPTIME$
       \end{block}
   \end{frame}
-
+  \subsection{What is $\PTIME$?}
+  \begin{frame}{The Deterministic Turing Machine}
+      \begin{block}{Definition}
+          \pause
+          \begin{table}[]
+              \centering
+              \begin{tabular}{ll}
+                  $\Box$ & The symbol denoting a blank \pause \\
+                  $\Gamma \ni \Box$
+                  & A finite \textit{alphabet} for the \textit{tape} \pause \\
+                  $\Sigma \subseteq \Gamma \setminus \Box$ 
+                  & The \textit{input} alphabet \pause \\
+                  $Q$ & A finite, non-empty set of states \pause \\
+                  $F \subseteq Q$
+                  & The \textit{final} or \textit{accepting} states \pause \\
+                  $q_0 \in Q$ & The initial state \pause \\
+                  $\delta: Q \setminus F \times \Gamma \pfun Q
+                  \times \Gamma \times \{L, R\}$ & The transition function
+              \end{tabular}
+          \end{table}
+          \pause
+          A DTM is then a 7-tuple
+          $M = \langle Q, \Gamma, \Box, \Sigma, \delta, q_0, F \rangle$
+      \end{block}
+  \end{frame}
+  \begin{frame}{Complexity Class $\PTIME$}
+      Now we are ready to define $\PTIME$
+      \pause
+      \begin{block}{Definition}
+          A computational problem belongs to
+              $\DTIME\left(f(n)\right)$ if it can be solved by a
+              DTM in $O(f(n))$ computational time 
+              \pause
+          $$\PTIME = \bigcup_{k \in \Natural}
+              \DTIME\left(n^k\right)$$
+      \end{block}
+  \end{frame}
+  \begin{frame}{The Non-Deterministic Turing Machine}
+      \begin{block}{Definition}
+          \pause
+          \begin{table}[]
+              \centering
+              \begin{tabular}{ll}
+                  $\Box$ & The symbol denoting a blank \pause \\
+                  $\Gamma \ni \Box$
+                  & A finite \textit{alphabet} for the \textit{tape} \pause \\
+                  $\Sigma \subseteq \Gamma \setminus \Box$ 
+                  & The \textit{input} alphabet \pause \\
+                  $Q$ & A finite, non-empty set of states \pause \\
+                  $F \subseteq Q$
+                  & The \textit{final} or \textit{accepting} states \pause \\
+                  $q_0 \in Q$ & The initial state \pause \\
+                  $\delta \subseteq (Q \setminus F \times \Gamma ) \times (Q
+                  \times \Gamma \times \{L, R\})$ & The transition function
+              \end{tabular}
+          \end{table}
+          \pause
+          An NDTM is then a 7-tuple
+          $M = \langle Q, \Gamma, \Box, \Sigma, \delta, q_0, F \rangle$
+      \end{block}
+  \end{frame}
+  \begin{frame}{Complexity Class $\NPTIME$}
+      Now we are ready to define $\NPTIME$
+      \pause
+      \begin{block}{Definition}
+          A computational problem belongs to
+              $\NTIME\left(f(n)\right)$ if it can be solved by an
+              NDTM in $O(f(n))$ computational time 
+              \pause
+          $$\NPTIME = \bigcup_{k \in \Natural}
+              \NTIME\left(n^k\right)$$
+      \end{block}
+  \end{frame}
   \section{Hodge Conjecture}
   \begin{frame}{Hodge Conjecture}
       \begin{block}{Problem Statement}
