@@ -1,4 +1,18 @@
-\documentclass[handout]{beamer}
+% for slides
+\documentclass{beamer}
+
+% for 1 page per slide printouts
+% \documentclass[handout]{beamer}
+% \usepackage{pgfpages}
+% \pgfpagesuselayout{resize to}[a4paper,landscape,border shrink=5mm]
+
+%\documentclass[handout]{beamer}
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[a4paper,landscape,border shrink=5mm]
+
+% \documentclass[handout]{beamer}
+% \usepackage{pgfpages}
+% \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
 
 \usepackage{oz}
 \usepackage{multicol}
@@ -39,6 +53,7 @@
 
   \section{Introduction}
   \begin{frame}{Introduction}
+      \pause
       \begin{itemize}
           \item The Millennium Prize Problems were seven unsolved problems
               set out by the Clay Mathematics Institute
@@ -65,6 +80,7 @@
   \end{frame}
   \subsection{What is $\PTIME$?}
   \begin{frame}{The Deterministic Turing Machine}
+      \pause
       \begin{block}{Definition}
           \pause
           \begin{table}[]
@@ -102,6 +118,7 @@
   \end{frame}
   \subsection{What is $\NPTIME$}
   \begin{frame}{The Non-Deterministic Turing Machine}
+      \pause
       \begin{block}{Definition}
           \pause
           \begin{table}[]
@@ -112,12 +129,12 @@
                   & A finite \textit{alphabet} for the \textit{tape} \pause \\
                   $\Sigma \subseteq \Gamma \setminus \Box$ 
                   & The \textit{input} alphabet \pause \\
-                  $Q$ & A finite, non-empty set of states \pause \\
+                  $Q$ & Finite, non-empty set of states \pause \\
                   $F \subseteq Q$
                   & The \textit{final} or \textit{accepting} states \pause \\
                   $q_0 \in Q$ & The initial state \pause \\
                   $\delta \subseteq (Q \setminus F \times \Gamma ) \times (Q
-                  \times \Gamma \times \{L, R\})$ & The transition function
+                  \times \Gamma \times \{L, R\})$ & The transition relation
               \end{tabular}
           \end{table}
           \pause
@@ -146,6 +163,7 @@
       \end{block}
   \end{frame}
   \begin{frame}{Riemann Zeta Function}
+      \pause
       \begin{block}{First definition}
           $$
           \zeta\left(s\right) = \sum_{n=1}^{\infty} \frac{1}{n^s} \qquad
@@ -157,6 +175,7 @@
       \includegraphics[width=0.5\textwidth]{zetagreater1.pdf}
   \end{frame}
   \begin{frame}{Riemann Zeta Function}
+      \pause
       \begin{block}{Second definition}
           $$
           \zeta\left(s\right) = \sum_{n=1}^{\infty} \frac{1}{n^s} \qquad
@@ -170,6 +189,7 @@
       \end{block}
   \end{frame}
   \begin{frame}{Riemann Zeta Function}
+      \pause
       \begin{block}{Fourth Definition}
           $$
           \zeta\left(s\right) = \product_{p \textrm{ prime}} \frac{1}{1 - p^{-s}}
@@ -177,6 +197,7 @@
       \end{block}
   \end{frame}
   \begin{frame}{Zeros}
+      \pause
       \begin{block}{Trivial Zeros}
           $$
           \zeta(s) = 0 \quad \forall s \in \left\{-2, -4, -6, \ldots \right\}
@@ -189,18 +210,19 @@
       \end{block}
       \pause
       \begin{block}{Highly Non-Trivial Zeros}
-          The statement of the theorem is concerned with the existence of
+          The statement of the problem is concerned with the existence of
           non-trivial zeros which do not lie on that line.
       \end{block}
   \end{frame}
   \begin{frame}{Consequences of the Riemann Hypothesis}
+      \pause
       \begin{block}{Prime Number Theorem}
           Using RH we get a tight bound on the remainder term of the prime
           number theorem expression for the number of primes below $x$
           $$
           \pi(x) = \underbrace{\integral_{2}^{x} \frac{1}{\log t}
           dt}_{\eqqcolon Li(x)} + O(\sqrt{x}\log x)
-          $$
+          $$\pause
           In particular, RH implies
           $$
           \left| \pi(x) - Li(x) \right| < \frac{1}{8\pi}\sqrt{x}\log x \quad
@@ -209,6 +231,7 @@
       \end{block}
   \end{frame}
   \begin{frame}{Consequences of the Riemann Hypothesis}
+      \pause
       \begin{block}{Growth of the Divisor Function}
           Let $\sigma(n) = \sum_{d | n}d$. Then RH implies
           $$
@@ -218,12 +241,86 @@
   \end{frame}
 
   \section{Navier-Stokes Existence and Smoothness}
+  \subsection{Problem Statement}
   \begin{frame}{Navier-Stokes Existence and Smoothness}
       \begin{block}{Problem Statement}
           Prove that there exist smooth solutions with finite energy of the
           Navier-Stokes equations for any given divergence-free initial
           velocity field with no external force applied on either $\Real^3$
-          or $\Real^3/\Integer$, OR prove that there exists a divergence-free
+          or $\Real^3/\Integer$.\pause\\
+          OR prove that there exists a divergence-free
+          intial velocity field and a smooth external force which does not
+          have a smooth solution with finite energy.
+      \end{block}
+  \end{frame}
+  \subsection{Navier-Stokes Equations}
+  \begin{frame}{Navier-Stokes Equations}
+      \pause
+      \begin{block}{Material Derivative}
+          We define $\frac{D}{Dt} \coloneqq \frac{\partial}{\partial t} +
+          \mathbf{u} \cdot \nabla$
+      \end{block}
+      \pause
+      \begin{block}{Incompressible Navier-Stokes}
+          $$
+          \frac{D \mathbf{u}}{D t} = -\nabla p + \nu\nabla^2\mathbf{u} +
+          \mathbf{F}
+          $$\pause
+          $$
+          \nabla \cdot \mathbf{u} = 0
+          $$
+      \end{block}
+      \pause
+      \begin{block}{Initial Conditions}
+          $$
+          \mathbf{u}(\mathbf{x}, 0) = \mathbf{u}^0(\mathbf{x}), \quad
+          \mathbf{u}^0 \in C^{\infty},\; \nabla \cdot \mathbf{u}^0 = 0
+          $$
+      \end{block}
+  \end{frame}
+  \begin{frame}{Conditions Imposed}
+      \linespread{0.8}
+      \pause
+      \begin{block}{Conditions Imposed on $\mathbf{u}^0$ and $\mathbf{F}$}
+          We require:
+          $$
+          \left| \partial^{\boldsymbol{\alpha}}_{\mathbf{x}} \mathbf{u}^0
+          \right| \le
+          C_{\boldsymbol{\alpha}K} \left(1 + \left|\mathbf{x}\right|\right)^{-K} \quad
+          \forall K > 0, \; \forall \boldsymbol{\alpha} \in \Natural_0^3, \;
+          \forall \mathbf{x} \in \Real^3
+          $$\pause
+          \begin{multline*}
+          \left| \partial^{\boldsymbol{\alpha}}_{\mathbf{x}}
+          \partial^m_t \mathbf{F}
+          \right| \le
+          C_{\boldsymbol{\alpha}mK} \left(1 + \left|\mathbf{x}\right| +
+          t\right)^{-K} \\
+          \forall K > 0, \; \forall \boldsymbol{\alpha} \in \Natural_0^3, \;
+          \forall m \in \Natural_0, \; \forall \mathbf{x} \in \Real^3, \;
+          \forall t \in [0, \infty)
+          \end{multline*}
+      \end{block}
+      \pause
+      \begin{block}{Physically Reasonable Solutions}
+          We require
+          $$
+          p, \mathbf{u} \in C^{\infty}(\Real^3 \times [0, \infty))
+          $$
+          \pause
+          $$
+          \integral_{\Real^n} \left| \mathbf{u}(\mathbf{x}, t) \right|^2
+          d\mathbf{x} < C \quad \forall t \in [0, \infty)
+          $$
+      \end{block}
+  \end{frame}
+  \begin{frame}{Navier-Stokes Existence and Smoothness}
+      \begin{block}{Problem Statement}
+          Prove that there exist smooth solutions with finite energy of the
+          Navier-Stokes equations for any given divergence-free initial
+          velocity field with no external force applied on either $\Real^3$
+          or $\Real^3/\Integer$.\pause\\
+          OR prove that there exists a divergence-free
           intial velocity field and a smooth external force which does not
           have a smooth solution with finite energy.
       \end{block}
@@ -324,6 +421,13 @@
       \begin{block}{Problem Statement}
           Prove that every simply connected, closed 3-manifold is
           homeomorphic to the 3-sphere.
+      \end{block}
+  \end{frame}
+
+  \section{Pause}
+  \begin{frame}{Questions}
+      \begin{block}{}
+          Any questions?
       \end{block}
   \end{frame}
 
