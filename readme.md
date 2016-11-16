@@ -2,6 +2,9 @@ Included in this repo are all of the files necessary to compile the finished
 presentation. You are free to copy and reuse this content under the terms of
 the GPL v3.
 
+##Presentation on Speaker Deck
+https://speakerdeck.com/smllmn/millennium-prize-problems#
+
 Below is a list of links I found useful during the compilation of this talk.
 Hopefully they'll be useful to you too.
 
