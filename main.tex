@@ -1,10 +1,10 @@
 % for slides
-% \documentclass{beamer}
+\documentclass{beamer}
 
 % for 1 page per slide printouts
-\documentclass[handout]{beamer}
-\usepackage{pgfpages}
-\pgfpagesuselayout{resize to}[a4paper,landscape,border shrink=5mm]
+% \documentclass[handout]{beamer}
+% \usepackage{pgfpages}
+% \pgfpagesuselayout{resize to}[a4paper,landscape,border shrink=5mm]
 
 %\documentclass[handout]{beamer}
 %\usepackage{pgfpages}
@@ -13,6 +13,10 @@
 % \documentclass[handout]{beamer}
 % \usepackage{pgfpages}
 % \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+
+% set to show the notes made throughout as slides
+% best used in the 2on1 handouts for reference by speaker
+% \setbeameroption{show notes}
 
 \usepackage{oz}
 \usepackage{multicol}
@@ -564,6 +568,7 @@
       \end{block}
   \end{frame}
   \begin{frame}{Algebraic Cycles}
+      \linespread{0.8}
       \pause
       \begin{block}{Subvarities}
           A subvariety $Z$ of a variety $X$ is a subset of $X$ which is also a
@@ -831,7 +836,7 @@
   \begin{frame}{Birch and Swinnerton-Dyer Conjecture}
       \begin{block}{Problem Statement}
           Prove that the Taylor expansion at $s=1$ of the incomplete
-          $L$-function $L(C, s)$ of non-singular projective model $C$ of a
+          $L$-function $L(C, s)$ of a non-singular projective model $C$ of a
           curve $C_0$ defined by $f(x, y) = 0$ for a polynomial
           $f \in \Rational [x, y]$ has the form
           $c(s-1)^r + \text{higher order terms}$ with
@@ -898,11 +903,11 @@
       \pause
       \begin{block}{Necessaries}
           An elliptic curve over $\Rational$ can be written in the form
-          $$y^2 = x^3 +_ax + b$$
+          $$y^2 = x^3 + ax + b$$
           \pause
           $\Delta \coloneqq -16(4a^3 + 27b^2)$ \pause \\
           $N_p \coloneqq \left|\left\{\text{solutions of } y^2 = x^3 + ax + b
-          \mathrm{ mod } p\right\}\right|$ \pause \\
+          \text{ mod } p\right\}\right|$ \pause \\
           $a_p \coloneqq N_p - p$
       \end{block}
       \pause
